@@ -1,0 +1,29 @@
+public class Main {
+
+    //1. Main method may be in this class. Main method contains an overview of what customers have bought/rented
+    // and sellers have sold, Shopping Carts, Promotion, Discounted Prices, Products being in stock or not.
+   
+  public static void main (String[] args){
+       //Observer Pattern Code
+      FactoryProductStatusOne p1 = new FactoryProductStatusOne();
+      FactoryProductStatusTwo p2 = new FactoryProductStatusTwo();
+      FactoryProductStatusThree p3 = new FactoryProductStatusThree();
+
+      MenuObserver mo = new MenuObserver();
+      mo.attach(p2);
+      mo.attach(p3);
+      mo.notifyUpdate(new Message("Product in stock."));
+      //attaching p2 and p3 to print "in-stock" message.
+      mo.detach(p2);
+      mo.detach(p3);
+      //detaching p2 and p3 so that p1 can be attached and "out-stock" can be printed.
+      mo.attach(p1);
+      mo.notifyUpdate(new Message("Product out-of-stock."));
+
+      mo.attach(p2);
+      mo.attach(p3);
+      mo.detach(p1); //p1 is detached as it became out-of-stock (hypothetically). So, "Ready to ship" message did not print for p1.
+      // we did not use detach() on p2 and p3. So, p2 and p3 are in-stock. That's why the "ready to ship" was printed for p2 and p3 only.
+      mo.notifyUpdate(new Message("Ready to ship."));
+  }
+}
