@@ -1,0 +1,20 @@
+public class MenuObserver implements Menu {
+    private List<Inventory> productStatus = new ArrayList<Inventory>();
+
+    @Override
+    public void attach(Inventory inStockProduct) {
+        productStatus.add(inStockProduct);
+    } // add the in-stock products
+
+    @Override
+    public void detach(Inventory outOfStockProduct) {
+        productStatus.remove(outOfStockProduct);
+    } //remove the out-of-stock products.
+
+    @Override
+    public void notifyUpdate(Message m) {
+        for(Inventory i: productStatus){
+            i.update(m);
+        } //for every i in Inventory Interface, update the message in the classes implementing it.
+    }
+}
