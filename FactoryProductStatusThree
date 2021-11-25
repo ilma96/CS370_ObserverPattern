@@ -1,0 +1,6 @@
+public class FactoryProductStatusThree implements Inventory{
+    @Override
+    public void update(Message m) {
+        System.out.println("The item, 'Sturdy WheelBarrow' : " + m.getMessageContent());
+    }
+}
