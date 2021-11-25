@@ -1,0 +1,7 @@
+public class FactoryProductStatusTwo implements Inventory{
+    @Override
+    public void update(Message m) {
+        System.out.println("The item, 'Large Sofa' : " +m.getMessageContent());
+
+    }
+}
