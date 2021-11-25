@@ -1,0 +1,13 @@
+//An immutable object so that no class can modify its content by mistake.
+// Open for extension and closed more modification principle at play here.
+// If Message Class was not here, every time you want to get a factory product status, you would have to modify
+// statuses in all the Factory classes.
+public class Message {
+    final String messageContent;
+    public Message(String m){
+        this.messageContent=m;
+    } //constructor
+    public String getMessageContent(){
+        return messageContent;
+    } //getter
+}
